@@ -1,0 +1,24 @@
+name: Readme
+
+on: 
+  push:
+    branches:
+      - main
+    paths: 
+      - README.md
+      - .github/workflows/readme.yml
+
+jobs:
+  docker-sync:
+    run-on: ubuntu-20.04
+    steps: 
+      - uses: actions/checkout@master
+
+      - uses: meeDamian/sync-readme@1.0.6
+        with:
+          user: ${{ secrets.DOCKER_HUB_USERNAME }}
+          pass: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          readme: README.md
+          slug: ${{ GITHUB_REPOSITORY }}
+          description: true
+         

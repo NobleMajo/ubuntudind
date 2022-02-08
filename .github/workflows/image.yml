@@ -1,4 +1,4 @@
-name: build
+name: Image
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     name: Test docker image
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Build docker image
@@ -22,7 +22,7 @@ jobs:
 
   release:
     name: Release docker image
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: test
     steps:
       - name: Set up QEMU
@@ -42,5 +42,9 @@ jobs:
         with:
           push: true
           tags: majo418/ubuntudind:latest
-          build-args: |
-            DOCKERIMAGE_TAG=20.10.6-dind
+
+      - name: Build and push commit hash tag
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: majo418/ubuntudind:${{ GITHUB_SHA }}
