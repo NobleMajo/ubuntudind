@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker rm -f ubuntu-dockerd
+docker rm -f ubuntudind

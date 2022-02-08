@@ -2,7 +2,7 @@
 
 docker run -d --privileged \
     --restart unless-stopped \
-    --name ubuntu-dockerd \
+    --name ubuntudind \
     --network host \
     -v $(pwd)/.store:/var/lib/docker \
-    ubuntu-dockerd
+    ubuntudind

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 docker run -it --privileged --rm \
-    --name ubuntu-dockerd-test \
+    --name ubuntudind-test \
     --network host \
-    ubuntu-dockerd \
+    ubuntudind \
         bash

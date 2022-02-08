@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it ubuntu-dockerd $@
+docker exec -it ubuntudind $@

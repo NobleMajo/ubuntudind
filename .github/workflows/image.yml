@@ -16,9 +16,9 @@ jobs:
       - name: Run built image
         run: ./start.sh
       - name: Check (max 5 times) if docker images is running
-        run: for i in {1..5}; do docker exec --tty ubuntu-dockerd env TERM=xterm docker info && break || sleep 10; done
+        run: for i in {1..5}; do docker exec --tty ubuntudind env TERM=xterm docker info && break || sleep 10; done
       - name: Check if docker can pull alpine:latest inside of the container
-        run: docker exec -i ubuntu-dockerd docker pull alpine:latest
+        run: docker exec -i ubuntudind docker pull alpine:latest
 
   release:
     name: Release docker image
@@ -47,4 +47,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: majo418/ubuntudind:${{ github.GITHUB_SHA }}
+          tags: majo418/ubuntudind:${{ git.GITHUB_SHA }}
