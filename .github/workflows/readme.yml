@@ -19,6 +19,6 @@ jobs:
           user: ${{ secrets.DOCKER_HUB_USERNAME }}
           pass: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           readme: README.md
-          slug: ${{ GITHUB_REPOSITORY }}
+          slug: ${{ github.GITHUB_REPOSITORY }}
           description: true
          
