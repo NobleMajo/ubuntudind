@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: 15 9 * * THU
 
 jobs:
   test:
@@ -41,10 +43,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: majo418/ubuntudind:latest
+          tags: ${{ github.repository }}:latest
 
       - name: Build and push commit hash tag
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: majo418/ubuntudind:${{ github.sha }}
+          tags: ${{ github.repository }}:${{ github.sha }}
