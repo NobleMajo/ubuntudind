@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: 15 9 * * THU
+    - cron: 45 21 * * 4
 
 jobs:
   test:
