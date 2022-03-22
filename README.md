@@ -90,5 +90,3 @@ This control scripts should help you to understand how to use the image and cont
 ---
 **cya ;3**  
 *by majo418*
-
-
