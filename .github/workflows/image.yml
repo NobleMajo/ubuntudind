@@ -50,7 +50,7 @@ jobs:
           registry: registry-1.docker.io
           tags: ${{ github.repository }}:${{ GITHUB.SHA }}
       - run: docker logout
-      
+
       - name: Login to GithubPkg
         uses: docker/login-action@v1 
         with:
@@ -63,6 +63,7 @@ jobs:
           push: true
           registry: docker.pkg.github.com
           tags: ${{ github.repository }}:latest
+      - name: Build and push (commit-hash|github-pkg)
         uses: docker/build-push-action@v1
         with:
           push: true
