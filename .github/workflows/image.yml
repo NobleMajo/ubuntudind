@@ -41,13 +41,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          registry: registry-1.docker.io
           tags: ${{ github.repository }}:latest
       - name: Build and push (commit-hash|docker-hub)
         uses: docker/build-push-action@v2
         with:
           push: true
-          registry: registry-1.docker.io
           tags: ${{ github.repository }}:${{ GITHUB.SHA }}
       - run: docker logout
 
@@ -61,11 +59,9 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           push: true
-          registry: docker.pkg.github.com
           tags: ${{ github.repository }}:latest
       - name: Build and push (commit-hash|github-pkg)
         uses: docker/build-push-action@v1
         with:
           push: true
-          registry: docker.pkg.github.com
           tags: ${{ github.repository }}:${{ GITHUB.SHA }}
