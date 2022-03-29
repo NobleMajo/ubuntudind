@@ -58,13 +58,11 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           registry: ghcr.io
-          repository: ${{ GITHUB.REPOSITORY }}
           tags: ${{ github.repository }}:latest
           logout: false
       - name: Build and push (commit-hash|github-pkg)
         uses: docker/build-push-action@v1
         with:
           registry: ghcr.io
-          repository: ${{ GITHUB.REPOSITORY }}
           tags: ${{ github.repository }}:${{ GITHUB.SHA }}
           logout: true
