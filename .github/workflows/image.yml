@@ -53,6 +53,7 @@ jobs:
         with:
           username: ${{ GITHUB.ACTOR }}
           password: ${{ GITHUB.TOKEN }}
+          registry: ghcr.io
       - name: Build and push (latest|github-pkg)
         uses: docker/build-push-action@v1
         with:
