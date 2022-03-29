@@ -36,17 +36,21 @@ jobs:
         with:
           username: ${{ SECRETS.DOCKER_HUB_USERNAME }}
           password: ${{ SECRETS.DOCKER_HUB_ACCESS_TOKEN }}
+          registry: registry-1.docker.io
       - name: Build and push (latest|docker-hub)
         uses: docker/build-push-action@v2
         with:
           push: true
+          registry: registry-1.docker.io
           tags: ${{ github.repository }}:latest
       - name: Build and push (commit-hash|docker-hub)
         uses: docker/build-push-action@v2
         with:
           push: true
+          registry: registry-1.docker.io
           tags: ${{ github.repository }}:${{ GITHUB.SHA }}
       - run: docker logout
+      
       - name: Login to GithubPkg
         uses: docker/login-action@v1 
         with:
@@ -56,10 +60,11 @@ jobs:
       - name: Build and push (latest|github-pkg)
         uses: docker/build-push-action@v1
         with:
+          push: true
           registry: docker.pkg.github.com
-          tags: latest
-          logout: false
+          tags: ${{ github.repository }}:latest
         uses: docker/build-push-action@v1
         with:
+          push: true
           registry: docker.pkg.github.com
-          tags: ${{ GITHUB.SHA }}
+          tags: ${{ github.repository }}:${{ GITHUB.SHA }}
