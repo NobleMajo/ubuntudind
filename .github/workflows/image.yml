@@ -36,7 +36,6 @@ jobs:
         with:
           username: ${{ SECRETS.DOCKER_HUB_USERNAME }}
           password: ${{ SECRETS.DOCKER_HUB_ACCESS_TOKEN }}
-          registry: registry-1.docker.io
       - name: Build and push (latest|docker-hub)
         uses: docker/build-push-action@v2
         with:
