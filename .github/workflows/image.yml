@@ -40,13 +40,13 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: latest
+          tags: ${{ github.repository }}:latest
           logout: false
       - name: Build and push (commit-hash|docker-hub)
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ GITHUB.SHA }}
+          tags: ${{ github.repository }}:${{ GITHUB.SHA }}
           logout: true
       - name: Login to GithubPkg
         uses: docker/login-action@v1 
