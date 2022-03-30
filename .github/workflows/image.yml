@@ -39,12 +39,10 @@ jobs:
       - name: Build and push (latest|docker-hub)
         uses: docker/build-push-action@v2
         with:
-          push: true
           tags: ${{ github.repository }}:latest
       - name: Build and push (commit-hash|docker-hub)
         uses: docker/build-push-action@v2
         with:
-          push: true
           tags: ${{ github.repository }}:${{ GITHUB.SHA }}
       - run: docker logout
 
@@ -57,10 +55,8 @@ jobs:
       - name: Build and push (latest|github-pkg)
         uses: docker/build-push-action@v1
         with:
-          push: true
           tags: ${{ github.repository }}:latest
       - name: Build and push (commit-hash|github-pkg)
         uses: docker/build-push-action@v1
         with:
-          push: true
           tags: ${{ github.repository }}:${{ GITHUB.SHA }}
