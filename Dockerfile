@@ -2,7 +2,7 @@ FROM docker:latest as docker
 
 FROM ubuntu:20.04
 
-LABEL version="1.0" maintainer="Majo Richter <majo@coreunit.net>"
+LABEL version="1.0" maintainer="Majo Richter <majo418@coreunit.net>"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
