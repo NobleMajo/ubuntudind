@@ -7,6 +7,8 @@ LABEL version="1.0" maintainer="Majo Richter <majo418@coreunit.net>"
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get full-upgrade -y && \
     apt-get install -y --no-install-recommends \
         apt-transport-https \
         ca-certificates \
@@ -16,8 +18,10 @@ RUN apt-get update && \
         gnupg && \
     apt-get autoremove -y && \
     apt-get clean && \
+    apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
+    rm -rf /tmp/*
 
 COPY --from=docker /usr/local/bin/ /usr/local/bin/
 COPY ./deamon.json /etc/docker/daemon.json
