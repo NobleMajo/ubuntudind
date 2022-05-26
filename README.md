@@ -32,6 +32,9 @@
 The main focus of this project is to provide a ubuntu image with functional docker deamon.
 You can use this image to run docker containers in a ubuntu container.
 
+This container needs the '--privileged' flag to run!
+This gives extended privileges to this container.
+
 # example commands
 ## pull image
 ```sh
