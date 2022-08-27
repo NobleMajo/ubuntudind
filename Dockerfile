@@ -1,4 +1,4 @@
-FROM docker:latest as docker
+FROM docker:dind-rootless as docker
 
 FROM ubuntu:20.04
 

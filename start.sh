@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./close.sh
+
 docker run -d --privileged \
     --restart unless-stopped \
     --name ubuntudind \
