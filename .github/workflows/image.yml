@@ -64,7 +64,7 @@ jobs:
           tags: ${{ GITHUB.REPOSITORY }}:${{ GITHUB.SHA }}
       - run: docker logout
   
-  tag_18.04:
+  tag_18_04:
     name: Release docker image
     runs-on: ubuntu-22.04
     needs: test
@@ -100,7 +100,7 @@ jobs:
           tags: ${{ GITHUB.REPOSITORY }}:18.04
       - run: docker logout
 
-  tag_20.04:
+  tag_20_04:
     name: Release docker image
     runs-on: ubuntu-22.04
     needs: test
@@ -136,7 +136,7 @@ jobs:
           tags: ${{ GITHUB.REPOSITORY }}:20.04
       - run: docker logout
 
-  tag_22.04:
+  tag_22_04:
     name: Release docker image
     runs-on: ubuntu-22.04
     needs: test
