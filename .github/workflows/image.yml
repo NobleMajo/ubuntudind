@@ -21,7 +21,7 @@ jobs:
         run: for i in {1..5}; do docker exec --tty ${{ github.event.repository.name }} env TERM=xterm docker info && break || sleep 10; done
 
   release:
-    name: Release docker image
+    name: Release ubuntu(latest) dind
     runs-on: ubuntu-22.04
     needs: test
     steps:
@@ -64,8 +64,8 @@ jobs:
           tags: ${{ GITHUB.REPOSITORY }}:${{ GITHUB.SHA }}
       - run: docker logout
   
-  tag_18_04:
-    name: Release docker image
+  release_18_04:
+    name: Release ubuntu 18.04 dind
     runs-on: ubuntu-22.04
     needs: test
     steps:
@@ -100,8 +100,8 @@ jobs:
           tags: ${{ GITHUB.REPOSITORY }}:18.04
       - run: docker logout
 
-  tag_20_04:
-    name: Release docker image
+  release_20_04:
+    name: Release ubuntu 20.04 dind
     runs-on: ubuntu-22.04
     needs: test
     steps:
@@ -136,8 +136,8 @@ jobs:
           tags: ${{ GITHUB.REPOSITORY }}:20.04
       - run: docker logout
 
-  tag_22_04:
-    name: Release docker image
+  release_22_04:
+    name: Release ubuntu 22.04 dind
     runs-on: ubuntu-22.04
     needs: test
     steps:
