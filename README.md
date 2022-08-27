@@ -15,11 +15,13 @@
 - [about](#about)
 - [example commands](#example-commands)
   - [pull image](#pull-image)
-  - [start container](#start-container)
+  - [self hosted docker deamon](#self-hosted-docker-deamon)
+  - [host shared docker socket](#host-shared-docker-socket)
   - [exec command](#exec-command)
   - [test with nginx](#test-with-nginx)
   - [remove container](#remove-container)
   - [run container persistently](#run-container-persistently)
+  - [tags](#tags)
 - [control scripts](#control-scripts)
 - [contribution](#contribution)
 
@@ -40,22 +42,31 @@ This gives extended privileges to this container.
 ```sh
 docker push majo418/ubuntudind:latest
 ```
-## start container
+## self hosted docker deamon
+Start the container as self hosting docker instance.
 ```sh
 docker run -d --privileged \
     --restart unless-stopped \
     --name ubuntudind \
     --network host \
-    ubuntudind:latest
+    majo418/ubuntudind:latest
+```
+## host shared docker socket
+Mount the host docker socket into the container 
+```sh
+docker run -it --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    majo418/ubuntudind:22.04 \
+        docker ps
 ```
 ## exec command
 ```sh
-docker exec -it ubuntudind \
+docker exec -it majo418/ubuntudind \
     docker ps
 ```
 ## test with nginx
 ```sh
-docker exec -it ubuntudind \
+docker exec -it majo418/ubuntudind \
     docker run -it --rm \
     --name test-nginx \
     -p 8080:80 \
@@ -72,8 +83,15 @@ docker run -d --privileged \
     --name ubuntudind \
     --network host \
     -v $(pwd)/.store:/var/lib/docker \
-    ubuntudind:latest
+    majo418/ubuntudind:latest
 ```
+
+## tags
+Build from newest ubuntu lts versions and latest:
+ - `ubuntu:latest`
+ - `ubuntu:22.04`
+ - `ubuntu:20.04`
+ - `ubuntu:18.04`
 
 # control scripts
 This control scripts should help you to understand how to use the image and container.
