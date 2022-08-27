@@ -1,0 +1,23 @@
+name: Image
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 10 13 * * 6
+
+jobs:
+  test:
+    name: Test docker image
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: ./build.sh
+      - name: Run built image
+        run: ./start.sh
+      - name: Check (max 5 times) if docker images is running
+        run: for i in {1..5}; do docker exec --tty ${{ github.event.repository.name }} env TERM=xterm docker info && break || sleep 10; done
+
+  

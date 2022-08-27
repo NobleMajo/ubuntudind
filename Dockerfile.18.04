@@ -1,6 +1,6 @@
 FROM docker:dind-rootless as docker
 
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 LABEL version="1.0" maintainer="Majo Richter <majo418@coreunit.net>"
 
