@@ -21,6 +21,7 @@
   - [test with nginx](#test-with-nginx)
   - [remove container](#remove-container)
   - [run container persistently](#run-container-persistently)
+- [scripts](#scripts)
   - [tags](#tags)
 - [control scripts](#control-scripts)
 - [contribution](#contribution)
@@ -86,9 +87,13 @@ docker run -d --privileged \
     noblemajo/ubuntudind:latest
 ```
 
+# scripts
+Checkout the script folder for more usage examples.
+
 ## tags
 Build from newest ubuntu lts versions and latest:
  - `ubuntu:latest`
+ - `ubuntu:24.04`
  - `ubuntu:22.04`
  - `ubuntu:20.04`
  - `ubuntu:18.04`
