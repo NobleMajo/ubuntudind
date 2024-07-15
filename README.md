@@ -22,7 +22,6 @@
   - [remove container](#remove-container)
   - [run container persistently](#run-container-persistently)
 - [scripts](#scripts)
-  - [tags](#tags)
 - [control scripts](#control-scripts)
 - [contribution](#contribution)
 
@@ -89,14 +88,6 @@ docker run -d --privileged \
 
 # scripts
 Checkout the script folder for more usage examples.
-
-## tags
-Build from newest ubuntu lts versions and latest:
- - `ubuntu:latest`
- - `ubuntu:24.04`
- - `ubuntu:22.04`
- - `ubuntu:20.04`
- - `ubuntu:18.04`
 
 # control scripts
 This control scripts should help you to understand how to use the image and container.

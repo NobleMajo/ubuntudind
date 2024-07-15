@@ -8,27 +8,25 @@ on:
     - cron: 10 13 * * 6
 
 jobs:
-  # test:
-  #   name: Test docker image
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Build docker image
-  #       run: ./scripts/build.sh
-  #     - name: Run built image
-  #       run: ./scripts/start.sh
-  #     - name: Check (max 5 times) if docker images is running
-  #       run: for i in {1..5}; do docker exec --tty ${{ github.event.repository.name }} env TERM=xterm docker info && break || sleep 10; done
-  #     - name: Clean up
-  #       run: ./scripts/close.sh
+  test:
+    name: Test docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build docker image
+        run: ./scripts/build.sh
+      - name: Run built image
+        run: ./scripts/start.sh
+      - name: Check (max 5 times) if docker images is running
+        run: for i in {1..5}; do docker exec --tty ${{ github.event.repository.name }} env TERM=xterm docker info && break || sleep 10; done
+      - name: Clean up
+        run: ./scripts/close.sh
 
   release:
     name: Release ubuntu(latest) dind
     runs-on: ubuntu-latest
-    env:
-      imagename: noblemajo/ubuntudind
-    #needs: test
+    needs: test
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -57,141 +55,3 @@ jobs:
             ${{ env.imagename }}:${{ GITHUB.SHA }}
             docker.pkg.github.com/${{ env.imagename }}:latest
             docker.pkg.github.com/${{ env.imagename }}:${{ GITHUB.SHA }}
-
-  # release_18_04:
-  #   name: Release ubuntu 18.04 dind
-  #   runs-on: ubuntu-latest
-  #   needs: test
-  #   steps:
-  #     - name: Set up QEMU
-  #       uses: docker/setup-qemu-action@v3
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v3
-  #     - name: Login to docker hub
-  #       uses: docker/login-action@v3
-  #       with:
-  #         logout: true
-  #         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-  #         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-  #     - name: Build and push (18.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         file: Dockerfile.18.04
-  #         push: true
-  #         tags: ${{ env.imagename }}:18.04
-
-  #     - name: Login to github
-  #       uses: docker/login-action@v3 
-  #       with:
-  #         logout: true
-  #         registry: docker.pkg.github.com
-  #         username: ${{ GITHUB.ACTOR }}
-  #         password: ${{ GITHUB.TOKEN }}
-  #     - name: Build and push (18.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         file: Dockerfile.18.04
-  #         push: true
-  #         tags: ${{ env.imagename }}:18.04
-
-  # release_20_04:
-  #   name: Release ubuntu 20.04 dind
-  #   runs-on: ubuntu-latest
-  #   needs: test
-  #   steps:
-  #     - name: Set up QEMU
-  #       uses: docker/setup-qemu-action@v3
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v3
-  #     - name: Login to docker hub
-  #       uses: docker/login-action@v3
-  #       with:
-  #         logout: true
-  #         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-  #         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-  #     - name: Build and push (20.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         file: Dockerfile.20.04
-  #         push: true
-  #         tags: ${{ env.imagename }}:20.04
-
-  #     - name: Login to github
-  #       uses: docker/login-action@v3 
-  #       with:
-  #         logout: true
-  #         registry: docker.pkg.github.com
-  #         username: ${{ GITHUB.ACTOR }}
-  #         password: ${{ GITHUB.TOKEN }}
-  #     - name: Build and push (20.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         tags: ${{ env.imagename }}:20.04
-
-  # release_22_04:
-  #   name: Release ubuntu 22.04 dind
-  #   runs-on: ubuntu-latest
-  #   needs: test
-  #   steps:
-  #     - name: Set up QEMU
-  #       uses: docker/setup-qemu-action@v3
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v3
-  #     - name: Login to docker hub
-  #       uses: docker/login-action@v3
-  #       with:
-  #         logout: true
-  #         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-  #         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-  #     - name: Build and push (22.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         file: Dockerfile.22.04
-  #         push: true
-  #         tags: ${{ env.imagename }}:22.04
-
-  #     - name: Login to github
-  #       uses: docker/login-action@v3 
-  #       with:
-  #         logout: true
-  #         registry: docker.pkg.github.com
-  #         username: ${{ GITHUB.ACTOR }}
-  #         password: ${{ GITHUB.TOKEN }}
-  #     - name: Build and push (22.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         tags: ${{ env.imagename }}:22.04
-
-  # release_24_04:
-  #   name: Release ubuntu 24.04 dind
-  #   runs-on: ubuntu-24.04
-  #   needs: test
-  #   steps:
-  #     - name: Set up QEMU
-  #       uses: docker/setup-qemu-action@v3
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v3
-  #     - name: Login to docker hub
-  #       uses: docker/login-action@v3
-  #       with:
-  #         logout: true
-  #         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-  #         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-  #     - name: Build and push (24.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         file: Dockerfile.24.04
-  #         push: true
-  #         tags: ${{ env.imagename }}:24.04
-
-  #     - name: Login to github
-  #       uses: docker/login-action@v3 
-  #       with:
-  #         logout: true
-  #         registry: docker.pkg.github.com
-  #         username: ${{ GITHUB.ACTOR }}
-  #         password: ${{ GITHUB.TOKEN }}
-  #     - name: Build and push (24.04|docker-hub)
-  #       uses: docker/build-push-action@v6
-  #       with:
-  #         tags: ${{ env.imagename }}:24.04
