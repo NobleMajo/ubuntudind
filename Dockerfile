@@ -2,12 +2,11 @@ FROM docker:dind-rootless as dind-source
 
 FROM ubuntu:latest
 
-LABEL version="1.1" maintainer="NobleMajo (Majo Richter) <majo@coreunit.net>"
+LABEL version="1.2" maintainer="NobleMajo (Majo Richter) <majo@coreunit.net>"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y apt-utils --no-install-recommends && \
     apt-get install -y --no-install-recommends \
         apt-transport-https ca-certificates \
         curl lxc iptables gnupg && \
