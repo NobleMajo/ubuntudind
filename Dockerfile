@@ -1,4 +1,4 @@
-FROM docker:dind-rootless as docker
+FROM docker:dind-rootless as dind-source
 
 FROM ubuntu:latest
 
@@ -19,7 +19,7 @@ RUN apt-get update && \
     rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
-COPY --from=docker /usr/local/bin/ /usr/local/bin/
+COPY --from=dind-source /usr/local/bin/ /usr/local/bin/
 COPY ./deamon.json /etc/docker/daemon.json
 
 VOLUME /var/lib/docker
