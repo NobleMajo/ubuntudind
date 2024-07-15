@@ -8,7 +8,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y apt-utils --no-install-recommends && \
-    apt-get full-upgrade -y && \
     apt-get install -y --no-install-recommends \
         apt-transport-https ca-certificates \
         curl lxc iptables gnupg && \

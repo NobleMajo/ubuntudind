@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -38,12 +40,12 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ github.repository }}:latest
+          tags: ${{ GITHUB.REPOSITORY }}:latest
       - name: Build and push (commit-hash|docker-hub)
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ github.repository }}:${{ github.sha }}
+          tags: ${{ GITHUB.REPOSITORY }}:${{ github.sha }}
       - run: docker logout
 
       - name: Login to github
@@ -67,6 +69,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -81,7 +85,7 @@ jobs:
         with:
           file: Dockerfile.18.04
           push: true
-          tags: ${{ github.repository }}:18.04
+          tags: ${{ GITHUB.REPOSITORY }}:18.04
       - run: docker logout
 
       - name: Login to github
@@ -101,6 +105,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -115,7 +121,7 @@ jobs:
         with:
           file: Dockerfile.20.04
           push: true
-          tags: ${{ github.repository }}:20.04
+          tags: ${{ GITHUB.REPOSITORY }}:20.04
       - run: docker logout
 
       - name: Login to github
@@ -135,6 +141,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -149,7 +157,7 @@ jobs:
         with:
           file: Dockerfile.22.04
           push: true
-          tags: ${{ github.repository }}:22.04
+          tags: ${{ GITHUB.REPOSITORY }}:22.04
       - run: docker logout
 
       - name: Login to github
@@ -169,6 +177,8 @@ jobs:
     runs-on: ubuntu-24.04
     needs: test
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -183,7 +193,7 @@ jobs:
         with:
           file: Dockerfile.24.04
           push: true
-          tags: ${{ github.repository }}:24.04
+          tags: ${{ GITHUB.REPOSITORY }}:24.04
       - run: docker logout
 
       - name: Login to github
