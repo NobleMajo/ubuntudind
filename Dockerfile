@@ -2,7 +2,7 @@ FROM docker:dind-rootless as docker
 
 FROM ubuntu:latest
 
-LABEL version="1.0" maintainer="Majo Richter <majo418@coreunit.net>"
+LABEL version="1.1" maintainer="NobleMajo (Majo Richter) <majo@coreunit.net>"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
