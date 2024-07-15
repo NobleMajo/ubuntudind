@@ -27,6 +27,8 @@ jobs:
     name: Release ubuntu(latest) dind
     runs-on: ubuntu-latest
     needs: test
+    env:
+      imagename: noblemajo/ubuntudind
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
