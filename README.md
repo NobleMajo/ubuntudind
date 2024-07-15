@@ -1,13 +1,13 @@
 # ubuntudind
-![Docker](https://img.shields.io/docker/image-size/majo418/ubuntudind)
-![CI/CD](https://github.com/majo418/ubuntudind/workflows/Image/badge.svg)
+![Docker](https://img.shields.io/docker/image-size/noblemajo/ubuntudind)
+![CI/CD](https://github.com/noblemajo/ubuntudind/workflows/Image/badge.svg)
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
-![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fmajo418%2Fubuntudind)
-![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fmajo418%2Fubuntudind)
-![](https://img.shields.io/badge/dynamic/json?color=orange&label=subscribers&query=subscribers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fmajo418%2Fubuntudind)
-![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fmajo418%2Fubuntudind)
-![](https://img.shields.io/badge/dynamic/json?color=darkred&label=open%20issues&query=open_issues&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fmajo418%2Fubuntudind)
+![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fubuntudind)
+![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fubuntudind)
+![](https://img.shields.io/badge/dynamic/json?color=orange&label=subscribers&query=subscribers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fubuntudind)
+![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fubuntudind)
+![](https://img.shields.io/badge/dynamic/json?color=darkred&label=open%20issues&query=open_issues&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fubuntudind)
 
 # table of contents
 - [ubuntudind](#ubuntudind)
@@ -27,9 +27,9 @@
 
 # about
 |
-[Docker Hub](https://hub.docker.com/r/majo418/ubuntudind)
+[Docker Hub](https://hub.docker.com/r/noblemajo/ubuntudind)
 |
-[GitHub](https://github.com/majo418/ubuntudind)
+[GitHub](https://github.com/noblemajo/ubuntudind)
 |  
 The main focus of this project is to provide a ubuntu image with functional docker deamon.
 You can use this image to run docker containers in a ubuntu container.
@@ -40,7 +40,7 @@ This gives extended privileges to this container.
 # example commands
 ## pull image
 ```sh
-docker push majo418/ubuntudind:latest
+docker push noblemajo/ubuntudind:latest
 ```
 ## self hosted docker deamon
 Start the container as self hosting docker instance.
@@ -49,24 +49,24 @@ docker run -d --privileged \
     --restart unless-stopped \
     --name ubuntudind \
     --network host \
-    majo418/ubuntudind:latest
+    noblemajo/ubuntudind:latest
 ```
 ## host shared docker socket
 Mount the host docker socket into the container 
 ```sh
 docker run -it --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    majo418/ubuntudind:22.04 \
+    noblemajo/ubuntudind:22.04 \
         docker ps
 ```
 ## exec command
 ```sh
-docker exec -it majo418/ubuntudind \
+docker exec -it noblemajo/ubuntudind \
     docker ps
 ```
 ## test with nginx
 ```sh
-docker exec -it majo418/ubuntudind \
+docker exec -it noblemajo/ubuntudind \
     docker run -it --rm \
     --name test-nginx \
     -p 8080:80 \
@@ -83,7 +83,7 @@ docker run -d --privileged \
     --name ubuntudind \
     --network host \
     -v $(pwd)/.store:/var/lib/docker \
-    majo418/ubuntudind:latest
+    noblemajo/ubuntudind:latest
 ```
 
 ## tags
@@ -112,4 +112,4 @@ This control scripts should help you to understand how to use the image and cont
 
 ---
 **cya ;3**  
-*by majo418*
+*by noblemajo*
