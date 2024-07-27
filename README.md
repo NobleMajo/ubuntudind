@@ -15,15 +15,15 @@
 - [about](#about)
 - [example commands](#example-commands)
   - [pull image](#pull-image)
-  - [self hosted docker deamon](#self-hosted-docker-deamon)
-  - [host shared docker socket](#host-shared-docker-socket)
-  - [exec command](#exec-command)
-  - [test with nginx](#test-with-nginx)
-  - [remove container](#remove-container)
-  - [run container persistently](#run-container-persistently)
-- [scripts](#scripts)
-- [control scripts](#control-scripts)
-- [contribution](#contribution)
+  - [Own docker sock](#own-docker-sock)
+  - [Host sock](#host-sock)
+  - [Exec commands](#exec-commands)
+  - [Nginx example](#nginx-example)
+  - [Persistent data](#persistent-data)
+- [Control Scripts](#control-scripts)
+- [Contributing](#contributing)
+- [License](#license)
+- [Disclaimer](#disclaimer)
 
 # about
 |
@@ -42,8 +42,8 @@ This gives extended privileges to this container.
 ```sh
 docker push noblemajo/ubuntudind
 ```
-## self hosted docker deamon
-Start the container as self hosting docker instance.
+## Own docker sock
+Start the container as self hosting docker instance:
 ```sh
 docker run -d --privileged \
     --restart unless-stopped \
@@ -51,32 +51,33 @@ docker run -d --privileged \
     --network host \
     noblemajo/ubuntudind
 ```
-## host shared docker socket
-Mount the host docker socket into the container 
+## Host sock
+You can also mount the host docker socket into the container:
 ```sh
 docker run -it --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     noblemajo/ubuntudind \
         docker ps
 ```
-## exec command
+## Exec commands
 ```sh
-docker exec -it noblemajo/ubuntudind \
+docker exec -it ubuntudind \
     docker ps
 ```
-## test with nginx
+## Nginx example
 ```sh
-docker exec -it noblemajo/ubuntudind \
+docker exec -it ubuntudind \
     docker run -it --rm \
     --name test-nginx \
     -p 8080:80 \
     nginx
 ```
-## remove container
+Don't forget to remove it:
 ```sh
 docker rm -f ubuntudind
 ```
-## run container persistently
+## Persistent data
+The container data need to be mounted for persistency:
 ```sh
 docker run -d --privileged \
     --restart unless-stopped \
@@ -86,10 +87,7 @@ docker run -d --privileged \
     noblemajo/ubuntudind
 ```
 
-# scripts
-Checkout the script folder for more usage examples.
-
-# control scripts
+# Control Scripts
 This control scripts should help you to understand how to use the image and container.
  - build.sh - build docker image
  - enter.sh - run a container with bash as entrypoint for image testing and debugging purposes
@@ -98,14 +96,13 @@ This control scripts should help you to understand how to use the image and cont
  - exec.sh - runs a command in the "test" container and prints the output
  - test.sh - runs a nginx container that bind port 8080 in the "test" container and prints the output
 
-# contribution
- - 1. fork the project
- - 2. implement your idea
- - 3. create a pull/merge request
-```ts
-// please create seperated forks for different kind of featues/ideas/structure changes/implementations
-```
+# Contributing
+Contributions to Ubuntudind are welcome!  
+Interested users can refer to the guidelines provided in the [CONTRIBUTING.md](CONTRIBUTING.md) file to contribute to the project and help improve its functionality and features.
 
----
-**cya ;3**  
-*by noblemajo*
+# License
+Ubuntudind is licensed under the [MIT license](LICENSE), providing users with flexibility and freedom to use and modify the software according to their needs.
+
+# Disclaimer
+Ubuntudind is provided without warranties.  
+Users are advised to review the accompanying license for more information on the terms of use and limitations of liability.
