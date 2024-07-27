@@ -40,7 +40,7 @@ This gives extended privileges to this container.
 # example commands
 ## pull image
 ```sh
-docker push noblemajo/ubuntudind:latest
+docker push noblemajo/ubuntudind
 ```
 ## self hosted docker deamon
 Start the container as self hosting docker instance.
@@ -49,14 +49,14 @@ docker run -d --privileged \
     --restart unless-stopped \
     --name ubuntudind \
     --network host \
-    noblemajo/ubuntudind:latest
+    noblemajo/ubuntudind
 ```
 ## host shared docker socket
 Mount the host docker socket into the container 
 ```sh
 docker run -it --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    noblemajo/ubuntudind:22.04 \
+    noblemajo/ubuntudind \
         docker ps
 ```
 ## exec command
@@ -83,7 +83,7 @@ docker run -d --privileged \
     --name ubuntudind \
     --network host \
     -v $(pwd)/.store:/var/lib/docker \
-    noblemajo/ubuntudind:latest
+    noblemajo/ubuntudind
 ```
 
 # scripts
