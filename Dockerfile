@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        iptables && \
+        ca-certificates iptables && \
     apt-get autoremove -y && \
     apt-get clean && \
     apt-get autoclean && \
