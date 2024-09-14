@@ -42,7 +42,7 @@ This gives extended privileges to this container.
 ```sh
 docker push noblemajo/ubuntudind
 ```
-## Own docker sock
+## own docker sock
 Start the container as self hosting docker instance:
 ```sh
 docker run -d --privileged \
@@ -51,7 +51,7 @@ docker run -d --privileged \
     --network host \
     noblemajo/ubuntudind
 ```
-## Host sock
+## host sock
 You can also mount the host docker socket into the container:
 ```sh
 docker run -it --rm \
@@ -59,12 +59,12 @@ docker run -it --rm \
     noblemajo/ubuntudind \
         docker ps
 ```
-## Exec commands
+## exec commands
 ```sh
 docker exec -it ubuntudind \
     docker ps
 ```
-## Nginx example
+## nginx example
 ```sh
 docker exec -it ubuntudind \
     docker run -it --rm \
@@ -76,7 +76,7 @@ Don't forget to remove it:
 ```sh
 docker rm -f ubuntudind
 ```
-## Persistent data
+## persistent data
 The container data need to be mounted for persistency:
 ```sh
 docker run -d --privileged \
@@ -87,7 +87,7 @@ docker run -d --privileged \
     noblemajo/ubuntudind
 ```
 
-# Control Scripts
+# control Scripts
 This control scripts should help you to understand how to use the image and container.
  - build.sh - build docker image
  - enter.sh - run a container with bash as entrypoint for image testing and debugging purposes
