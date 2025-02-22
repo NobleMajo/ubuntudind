@@ -26,14 +26,16 @@
 - [Disclaimer](#disclaimer)
 
 # about
-|
-[Docker Hub](https://hub.docker.com/r/noblemajo/ubuntudind)
-|
-[GitHub](https://github.com/noblemajo/ubuntudind)
-|  
 The main focus of this project is to provide a ubuntu image with functional docker deamon.
-You can use this image to run docker containers in a ubuntu container.
+You can use this image to run docker containers in a ubuntu container. 
 
+## docker hub
+This repo is also on [Docker Hub](https://hub.docker.com/r/noblemajo/ubuntudind).
+
+## automated updates
+The build image is automatically updated without worrying about a dead repo or less maintenance.
+
+# requirements
 This container needs the '--privileged' flag to run!
 This gives extended privileges to this container.
 
